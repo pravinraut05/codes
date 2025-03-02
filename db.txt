@@ -1,0 +1,57 @@
+# 4.Find the names of all customers who have ordered a product with a price greater than ₹ 8000. 
+
+# USING JOINING
+# select T1.name,T1.price from
+# (select p.price,od.order_id,c.name from products p
+# join order_details od on od.product_id = p.product_id
+# join orders_0 o on o.order_id = od.order_id
+# join customers c on c.customer_id = o.customer_id) as T1
+# where T1.price > 8000;
+
+
+# USING SUBQUERY
+# select name from customers
+# where customer_id in
+# (select customer_id from orders_0
+#  where order_id in
+#  (select order_id from order_details
+#   where product_id in
+#   (select product_id from products
+#    where price > 8000)));
+
+# Section 1
+
+# 1.Find the names of all customers who made an order on their first visit to the website.
+
+
+
+
+# 1.Find   names of all employees whose name starts with the letter "J".
+# select name from employees_new 
+# where name like 'j%';
+
+# 2.Find the names of all employees who were hired before January 1st, 2000, and whose salary is greater than ₹ 5,00,000.
+# select name from employees_new
+# where hire_date < '2020-01-01' and salary > 500000
+
+#3. For each department, find the average salary of employees who have had the title of "Manager" at any point in time.
+
+# Section 5
+
+# 1. Find the names of all cities where at least one customer lives, in alphabetical order.
+# select distinct(city) from customers order by city desc
+
+
+# 2.Find the names of the first 5 customers whose names start with the letter "J". 
+# select   
+
+#3. Find the distinct first letters of all customer names, in alphabetical order.
+# select distinct left(name,1) as first_letter from customers
+# order by first_letter
+
+
+
+select left("hello",1);
+select right("hello",1);
+select replace("good morning","good","bad");
+select reverse(name) from products;
